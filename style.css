@@ -15,6 +15,7 @@ body {
     font-weight: 400;
     background: #010501;
     color: #fff;
+    line-height: 1.6;
 }
 
 .container {
@@ -387,63 +388,68 @@ textarea {
     text-align:center;
 
 }
+.copyright{
+    width:100%;
+    color: #f0b318;
+}
+.about-img{
+    width: auto;
+}
 
-@media only screen and (max-width: 700px){
-    .container {
-        width: 95%;
-        margin: 0px auto;
-        display: table;
-    }
+@media only screen and (max-width: 768px){
     
     .width-33 {
-        width: 33%;
-        float: left;
+        padding: 50px 50px 50px 50px;
     }
     
     .width-66 {
-        width: 66%;
-        float: left;
-        margin-top: 10px
+        width:100%;
+        margin-top:auto;
     }
     
-    .screen{
-        display: flex;
-    
-}
-.about-us {
-    width: 50%;
-    float: right;
-    padding-left: 50px;
-}
-.footer {
-    background-color: #080808;
-    width: 100%;
-    float: right;
-    height: 20vh;
-    margin-top: 50px;
-    flex-direction: column;
-}
-.main-panel img {
-        margin-top: 10%;
-        width: 100%;
-        margin-left: 10%;
-        float: left;}
+    .container{
+        padding: 10px;
     }
-.copyright{
-    padding-right: 200px;
-    padding-bottom: 50px;
-    color: #f0b318;
-    height: 50%;
-    width: 100%;
-    margin-left: 50vh;
-    text-align:center;
-    display: flex;
+    .width-50{
+        width:100%;
+        text-align: center;
+        
+    }
+    nav a{
+        display:flex;
+        margin:5px 10px 5px 50px;
+    }
+    
+h1 {
+    font-size: 1.5rem;
+}
 
+h2 {
+    font-size: 1.2rem;
 }
-.width-50{
-    text-align: right;
-    margin-top: 50px;
-}
-.social-icon.width-100{
-    text-align: center;
+
+table th,
+table td {
+    font-size: 0.9rem;
+}}
+@media only screen(max-width: 768px){
+    nav {
+        flex-direction: row;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    .service-list i {
+        font-size: 1.5rem;
+    }
 }
