@@ -31,8 +31,9 @@ body {
 
 .width-66 {
     width: 66%;
-    float: left;
-    margin-top: 10px
+    float: right;
+    margin-top: 10px;
+    text-align:left;
 }
 
 .screen{
@@ -113,10 +114,7 @@ nav a {
 /*****Main BANNER IMAGE*****/
 .main-panel img {
     margin-top: 10%;
-    max-width:fit-content;
-    margin-left: 10%;
-    float: left;
-    max-height: fit-content;
+    max-width:100%;
     
 }
 
@@ -130,12 +128,12 @@ nav a {
 
 .width-100 {
     width: 100%;
-    float: right;
     background: #000;
+    text-align: center;
 }
 
 .mt-20 {
-    margin-top: 20px;
+    margin-top: 0px;
     text-align: right;
     float:center;
 }
@@ -150,21 +148,13 @@ nav a {
 }
 
 .about-img {
-    height: 70%;
-    width: 70%;
-    padding: 0px 0px 0px 0px;
-    margin-left:10px;
- float :left; */
+    height: 100%;
+    width:100%;
+ float :left; 
 }
-
-* #profile{
-    padding-right: 10vh;
-} */
-
 .about-us {
-    width: 50%;
+    width: 100%;
     float: right;
-    padding-left: 50px;
 }
 
 .about-us p {
@@ -183,10 +173,6 @@ table td {
     text-align: left;
     padding: 5px 0px;
     max-width: 10px;
-}
-
-table th{
-    max-width: ;
 }
 
 /*****SKILL SECTION*****/
@@ -218,13 +204,10 @@ div[role="progressbar"] {
     margin-left: 100px;
     margin-bottom: 20px;
     width: 100px;
-    ;
     height: 100px;
-    ;
     border-radius: 50%;
-
     place-items: center;
-    display: grid;
+    display:grid;
 
     --pgPercentage: var(--value);
     background: radial-gradient(closest-side, black 80%, transparent 0 99.9%, black 0),
@@ -393,35 +376,38 @@ textarea {
     color: #f0b318;
 }
 .about-img{
-    width: auto;
+    width: 100%;
 }
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 780px){
     
     .width-33 {
-        padding: 50px 50px 50px 50px;
+        padding: 10px 0px 10px 5px;
+        display: flex;
     }
     
     .width-66 {
-        width:100%;
-        margin-top:auto;
+        width: 100px;
+        margin-top:10px;
+        text-align: left;
+        display: flex;
+        flex-direction:row;
     }
     
     .container{
-        padding: 10px;
+        max-width:100%;
     }
     .width-50{
-        width:100%;
-        text-align: center;
+        width:100%
         
     }
     nav a{
         display:flex;
-        margin:5px 10px 5px 50px;
+        margin:auto;
     }
     
-h1 {
-    font-size: 1.5rem;
+    
+h1 {    font-size: 1.5rem;
 }
 
 h2 {
@@ -431,25 +417,9 @@ h2 {
 table th,
 table td {
     font-size: 0.9rem;
-}}
-@media only screen(max-width: 768px){
-    nav {
-        flex-direction: row;
-    }
-
-    .logo {
-        font-size: 1.2rem;
-    }
-
-    h1 {
-        font-size: 1.2rem;
-    }
-
-    h2 {
-        font-size: 1rem;
-    }
-
-    .service-list i {
-        font-size: 1.5rem;
-    }
+}
+.about-us{
+    max-width:100%;
+    text-align:left;
+}
 }
