@@ -1,12 +1,10 @@
-/*****COMMON CSS SECTION*****/
+/***** COMMON CSS SECTION *****/
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    -outline: 0;
-    font-family: Arial,
-    sans-serif,
-    arial;
+    /* -outline: 0; - This is likely a typo and causes CSS errors. Removed it. */
+    font-family: Arial, sans-serif; /* Simplified font-family */
 }
 
 html,
@@ -16,12 +14,20 @@ body {
     background: #010501;
     color: #fff;
     line-height: 1.6;
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
 }
 
 .container {
     width: 95%;
-    margin: 0px auto;
+    margin: 0 auto; /* Shorthand for top/bottom 0, left/right auto */
+    display: table; /* Used for clearing floats */
+}
+
+/* Clearfix for floated elements */
+.container::after {
+    content: "";
     display: table;
+    clear: both;
 }
 
 .width-33 {
@@ -33,19 +39,19 @@ body {
     width: 66%;
     float: right;
     margin-top: 10px;
-    text-align:left;
+    text-align: left;
 }
 
-.screen{
+.screen {
     display: flex;
 }
 
-/*****MENU SECTION*****/
+/***** MENU SECTION *****/
 .main-panel {
     width: 100%;
-    float: left;
-    padding-top: 0px;
-    padding-bottom: 0px
+    float: left; /* Keep this for the overall layout */
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .logo {
@@ -68,19 +74,51 @@ nav a {
     font-weight: 500;
     margin-left: 20px;
     color: white;
+    position: relative; /* For the underline effect */
+    transition: color 0.3s ease-in-out; /* Smooth transition for color */
 }
 
-/*****Main BANNER*****/
-.width-50 {
-    float: left;
-    width: 50%
-
+nav a:hover {
+    color: #f0b318; /* Change color on hover */
 }
 
+/* Navbar hover underline effect */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px; /* Adjust position as needed */
+    left: 0;
+    background-color: #f0b318;
+    transition: width 0.3s ease-in-out; /* Smooth transition for width */
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+
+/***** Main BANNER *****/
 .banner-section {
     width: 100%;
     float: left;
-    margin-top: 25vh;
+    margin-top: 15vh; /* Adjusted for better visual balance */
+    margin-bottom: 50px; /* Added some bottom margin */
+    text-align: center; /* Center content by default */
+}
+
+.banner-section .width-50 {
+    width: 50%;
+    float: left;
+    text-align: center; /* Ensure content within is centered */
+}
+
+.banner-welcome {
+    font-size: 18px;
+    font-weight: 600;
+    display: block; /* To apply text-align center correctly */
+    margin-bottom: 10px;
 }
 
 .banner-section h1 {
@@ -96,33 +134,47 @@ nav a {
     font-weight: 400;
 }
 
-.banner-section a {
-    float: left;
+.social-links {
+    display: flex; /* Use flexbox for social icons */
+    justify-content: center; /* Center the icons horizontally */
+    margin-top: 30px;
+    gap: 15px; /* Space between icons */
+}
+
+.social-links a {
+    display: inline-flex; /* Changed to inline-flex for better alignment with flexbox */
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     font-size: 18px;
-    margin-top: 20px;
     border-radius: 50%;
-    text-align: center;
     border: 2px solid #ffbf35;
     color: #ffbf35;
-    margin-left: 10px;
     height: 50px;
     width: 50px;
-    line-height: 50px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
 
-/*****Main BANNER IMAGE*****/
+.social-links a:hover {
+    background-color: #ffbf35;
+    color: #010501;
+}
+
+/***** Main BANNER IMAGE *****/
 .main-panel img {
     margin-top: 10%;
-    max-width:100%;
-    
+    max-width: 100%;
+    height: auto; /* Ensure aspect ratio is maintained */
+    display: block; /* Prevents extra space below image */
+    margin-left: auto; /* Center image if its container has space */
+    margin-right: auto;
 }
 
-/*ABOUT US SECTION*/
+/* ABOUT US SECTION */
 .main-section {
     width: 100%;
-    float: right;
-    padding: 20px 20px 20px 0px;
+    float: left; /* Changed from right to left for consistency and flow */
+    padding: 50px 0; /* Adjusted padding for better spacing */
     background: #000;
 }
 
@@ -133,9 +185,13 @@ nav a {
 }
 
 .mt-20 {
-    margin-top: 0px;
-    text-align: right;
-    float:center;
+    margin-top: 20px; /* Consistent margin-top */
+    text-align: left; /* Keep table text left-aligned in desktop */
+    float: none; /* Remove float for better control */
+    display: inline-block; /* Allow centering of content blocks if needed */
+    vertical-align: top; /* Align multiple mt-20 divs if side-by-side */
+    width: 48%; /* Adjust width for desktop if two tables are side by side */
+    margin-right: 2%; /* Gap between tables */
 }
 
 .heading-text {
@@ -147,14 +203,32 @@ nav a {
     color: #ffbf35;
 }
 
-.about-img {
-    height: 100%;
-    width:100%;
- float :left; 
+.profile-img-container { /* New class for image container in about section */
+    height: auto; /* Adjust height based on content */
+    width: 100%; /* Take full width of its parent initially */
+    float: left;
+    display: flex;
+    justify-content: center; /* Center the image within its container */
+    align-items: center;
+    padding: 20px 0;
 }
+
+#profile img { /* Specific styling for Faizan's picture */
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Optional: subtle rounded corners */
+    display: block; /* Ensure it behaves as a block element */
+}
+
 .about-us {
     width: 100%;
-    float: right;
+    float: left; /* Keep float for desktop layout */
+    padding-left: 20px; /* Add some padding on the left */
+}
+
+.about-us h2:first-of-type { /* Target the "I am available..." heading */
+    margin-top: 20px; /* Add some space above it */
+    font-size: 24px;
 }
 
 .about-us p {
@@ -164,25 +238,42 @@ nav a {
 }
 
 table {
-    width: 50%;
+    width: 100%; /* Make table full width within its container */
+    max-width: 400px; /* Limit max width for readability */
+    margin: 0 auto; /* Center table within its container */
 }
 
 table th,
 table td {
     font-size: 16px;
     text-align: left;
-    padding: 5px 0px;
-    max-width: 10px;
+    padding: 8px 0px; /* Increased padding for better readability */
+    vertical-align: top; /* Align content to the top */
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.1); /* Subtle separator */
 }
 
-/*****SKILL SECTION*****/
+table th {
+    color: #f0b318; /* Highlight table headers */
+    width: 30%; /* Give some width to headers */
+}
+
+/***** SKILL SECTION *****/
 .skill {
     margin-top: 30px;
     font-size: 17px;
+    width: 100%; /* Ensure skill bars take full width */
+    float: left; /* Ensure it floats correctly within its column */
+}
+
+.skill b { /* Styling for skill name */
+    display: block; /* Make skill name a block to separate from percentage */
+    margin-bottom: 5px;
 }
 
 .skill span {
     float: right;
+    color: #fff; /* Ensure percentage is visible */
+    font-weight: bold;
 }
 
 .skill div {
@@ -191,31 +282,41 @@ table td {
     margin-top: 5px;
     background: #e7e7e7;
     border-radius: 10px;
+    overflow: hidden; /* Hide overflow for skill bar animation */
 }
 
 .skill div span {
     background: #ffbf35;
     height: 5px;
     float: left;
+    transition: width 0.5s ease-in-out; /* Smooth animation for skill bar fill */
+}
+
+.skill-circle { /* Wrapper for individual progress bars */
+    width: 50%; /* Arrange two circles per row on larger screens */
+    float: left;
+    text-align: center; /* Center the progress bar text */
+    margin-bottom: 30px; /* Space between rows of circles */
 }
 
 div[role="progressbar"] {
     color: #ffbf35;
-    margin-left: 100px;
+    margin: 0 auto; /* Center the progress bar */
     margin-bottom: 20px;
-    width: 100px;
-    height: 100px;
+    width: 120px; /* Increased size for better visibility */
+    height: 120px;
     border-radius: 50%;
+    display: grid;
     place-items: center;
-    display:grid;
+    font-weight: bold;
+    font-size: 16px; /* Adjust font size */
 
     --pgPercentage: var(--value);
     background: radial-gradient(closest-side, black 80%, transparent 0 99.9%, black 0),
         conic-gradient(#ffbf35 calc(var(--pgPercentage) * 1%), #ffe6af 0);
-
 }
 
-/*****EXPERIENCE SECTION*****/
+/***** EXPERIENCE SECTION *****/
 .bg-lightgrey {
     background-color: #1a1a1a;
 }
@@ -231,9 +332,10 @@ div[role="progressbar"] {
 .experience-list {
     width: 100%;
     float: left;
-    padding: 30px 10px;
+    padding: 30px 20px; /* Adjusted padding */
     background: #262626;
     margin-bottom: 20px;
+    border-radius: 10px; /* Added slight border radius */
 }
 
 .experience-content {
@@ -243,7 +345,6 @@ div[role="progressbar"] {
 }
 
 .experience-content h2 {
-
     font-weight: 600;
     margin-bottom: 5px;
     font-size: 20px;
@@ -260,14 +361,21 @@ div[role="progressbar"] {
     font-size: 15px;
 }
 
-/*SERVICE SECTION*/
+/* SERVICE SECTION */
 .service-list {
     padding: 40px;
     margin-top: 35px;
     background: #262626;
     border-radius: 15px;
-    width: 94%;
+    width: 94%; /* Keep this if you want a margin from the right */
+    margin-left: 3%; /* Center the service list within its 50% width-50 container */
     float: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+}
+
+.service-list:hover {
+    transform: translateY(-10px); /* Lift effect */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Shadow effect */
 }
 
 .service-list i {
@@ -275,6 +383,7 @@ div[role="progressbar"] {
     color: #ffbf35;
     width: 70px;
     float: left;
+    margin-right: 15px; /* Space between icon and text */
 }
 
 .service-list h3 {
@@ -288,79 +397,107 @@ div[role="progressbar"] {
     line-height: 25px;
 }
 
-/*CONTACT US SECTION*/
+/* CONTACT US SECTION */
 .contact form {
     width: 66%;
-    margin: 0px auto;
+    max-width: 600px; /* Limit form width */
+    margin: 0 auto;
+    padding: 30px; /* Add padding to form */
+    background-color: #1a1a1a; /* Subtle background for form */
+    border-radius: 10px;
 }
 
 .contact input,
-textarea {
+.contact textarea { /* Combined selector */
     width: 100%;
     float: left;
     margin-bottom: 20px;
     height: 40px;
     padding: 10px;
     border: 1px solid #a1a1a1;
+    background-color: #0d0d0d; /* Darker input background */
+    color: #fff;
+    border-radius: 5px;
 }
 
 .contact textarea {
-    height: 80px;
+    height: 120px; /* Increased height for textarea */
+    resize: vertical; /* Allow vertical resizing */
 }
 
 .contact button {
     width: 100%;
     float: left;
-    margin-bottom: 20px;
+    margin-bottom: 0; /* No bottom margin for button */
     height: 50px;
     padding: 10px;
     background: #ffbf35;
     color: #fff;
     border: none;
     font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.contact h3 {
+.contact button:hover {
+    background-color: #e0a30b; /* Slightly darker on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.contact h3 { /* Unused in provided HTML, but kept for consistency */
     font-size: 26px;
     text-align: center;
     margin-top: 60px;
     color: #ffbf35;
 }
 
-.contact h4 {
+.contact h4 { /* Unused in provided HTML, but kept for consistency */
     font-size: 22px;
     text-align: center;
     margin-top: 10px;
 }
 
-.contact p {
+.contact p { /* Unused in provided HTML, but kept for consistency */
     text-align: center;
     font-size: 16px;
     margin-top: 5px;
 }
 
-/*****FOOTER SECTION*****/
+/***** FOOTER SECTION *****/
 .footer {
     background-color: #080808;
     width: 100%;
-    float: right;
-    height: 20vh;
-    margin-top: 50px;
+    float: left; /* Changed from right to left */
+    min-height: 20vh; /* Use min-height to ensure it expands if content increases */
+    padding: 30px 0; /* Add padding for content */
+    display: flex; /* Use flexbox for internal alignment */
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
 }
 
 .footer-sect {
     color: #ffbf35;
-    text-align: right;
+    text-align: center; /* Center social icons */
+    width: 100%; /* Ensure it takes full width for centering */
+    margin-bottom: 20px;
 }
 
 .footer-sect a {
     color: #b3b3b3;
-    margin-left: 5%;
-    text-decoration: dotted;
+    margin: 0 10px; /* Adjusted margin for spacing between icons */
+    text-decoration: none; /* Removed dotted text decoration */
     font-size: 22px;
-    text-align:left;
+    display: inline-block; /* Allows margin to work correctly */
+    transition: color 0.3s ease;
 }
+
+.footer-sect a:hover {
+    color: #ffbf35;
+}
+
 .social-icon a i {
     width: 50px;
     height: 50px;
@@ -368,58 +505,166 @@ textarea {
     line-height: 50px;
     font-size: 32px;
     border-radius: 50%;
-    text-align:center;
+    text-align: center;
+}
 
-}
-.copyright{
-    width:100%;
-    color: #f0b318;
-}
-.about-img{
+.copyright {
     width: 100%;
+    color: #f0b318;
+    text-align: center; /* Center copyright text */
+    margin-top: 20px;
+    font-size: 14px;
 }
 
-@media only screen and (max-width: 780px){
-    
-    .width-33 {
-        padding: 10px 0px 10px 5px;
-        display: flex;
-    }
-    
+/* MEDIA QUERIES FOR RESPONSIVENESS */
+@media only screen and (max-width: 780px) {
+
+    .width-33,
     .width-66 {
-        width: 100px;
-        margin-top:10px;
-        text-align: left;
-        display: flex;
-        flex-direction:row;
+        width: 100%; /* Make both logo and nav full width */
+        float: none; /* Remove floats */
+        text-align: center; /* Center content */
+        margin-top: 0; /* Reset margin */
     }
-    
-    .container{
-        max-width:100%;
+
+    .logo {
+        margin-bottom: 15px; /* Add space below logo */
     }
-    .width-50{
-        width:100%
-        
+
+     nav {
+        float: none; /* Remove float */
+        display: flex; /* Make nav a flex container */
+        justify-content: flex-end; /* Align items to the end (right) */
+        align-items: center; /* Vertically center items (if nav has height) */
+        flex-wrap: wrap; /* Allow items to wrap to the next line if space runs out */
+        width: 100%; /* Ensure nav takes full width for flexbox alignment */
+        margin-bottom: 20px;
     }
-    nav a{
-        display:flex;
-        margin:auto;
+
+    nav a {
+        display: inline-block; /* Stack navigation links */
+        margin: 0 8px auto; /* Center individual links */
+       /* width: fit-content; /* Adjust width to content */
     }
-    
-    
-h1 {    font-size: 1.5rem;
+     nav a::after {
+        /* Keep existing after pseudo-element for underline */
+    }
+
+    .banner-section {
+        margin-top: 5vh; /* Reduce top margin on smaller screens */
+    }
+
+    .banner-section .width-50 {
+        width: 100%; /* Make both banner content and image full width */
+        float: none; /* Remove floats */
+        text-align: center; /* Center content */
+    }
+
+    .social-links {
+        justify-content: center; /* Ensure social links remain centered */
+        margin-bottom: 30px; /* Add space below social links */
+    }
+
+    h1 {
+        font-size: 2.5rem; /* Adjust font size for smaller screens */
+    }
+
+    h2 {
+        font-size: 1.2rem; /* Adjust font size for smaller screens */
+    }
+
+    .main-section {
+        padding: 30px 0; /* Adjust padding for sections */
+    }
+
+    .profile-img-container {
+        padding: 0 20px; /* Add horizontal padding for image */
+    }
+
+    #profile img {
+        max-width: 80%; /* Reduce max-width of Faizan's picture for better fit */
+        margin: 0 auto; /* Ensure it's centered */
+        display:block;
+    }
+
+    .about-us {
+        padding: 0 20px; /* Add horizontal padding to about text */
+        float: none; /* Remove float */
+        text-align: center; /* Center about text */
+    }
+
+    .mt-20 {
+        width: 100%; /* Make table containers full width */
+        margin: 15px auto; /* Center and add vertical spacing */
+        text-align: center; /* Center tables */
+        float: none;
+    }
+
+    table {
+        width: 95%; /* Ensure table doesn't overflow */
+        margin: 0 auto; /* Center table */
+    }
+
+    table th,
+    table td {
+        font-size: 0.9rem;
+        padding: 6px 0; /* Adjust padding */
+    }
+
+    .skill-circle {
+        width: 100%; /* Stack skill circles vertically */
+        float: none; /* Remove float */
+        margin-bottom: 20px;
+    }
+
+    div[role="progressbar"] {
+        margin: 0 auto 20px auto; /* Center and add bottom margin */
+    }
+
+    .service-list {
+        width: 90%; /* Adjust width for services on small screens */
+        margin: 25px auto; /* Center them horizontally */
+        float: none;
+        padding: 30px; /* Adjust padding */
+    }
+
+    .service-list i {
+        float: none; /* Remove float for icon */
+        margin: 0 auto 15px auto; /* Center icon and add bottom margin */
+        display: block; /* Make icon a block element to center */
+    }
+
+    .service-list h3 {
+        text-align: center; /* Center service headings */
+    }
+
+    .service-list p {
+        text-align: center; /* Center service paragraphs */
+    }
+
+    .contact form {
+        width: 90%; /* Adjust form width */
+        padding: 20px; /* Adjust padding */
+    }
+
+    .footer {
+        padding: 20px 0; /* Adjust footer padding */
+        min-height: auto; /* Allow height to shrink */
+    }
+
+    .footer-sect {
+        margin-bottom: 10px; /* Adjust spacing */
+    }
+
+    .copyright {
+        font-size: 12px; /* Smaller copyright text */
+    }
+    .main-panel img {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .banner-section .social-links {
+        justify-content: center;
+    }
 }
 
-h2 {
-    font-size: 1.2rem;
-}
-
-table th,
-table td {
-    font-size: 0.9rem;
-}
-.about-us{
-    max-width:100%;
-    text-align:left;
-}
-}
